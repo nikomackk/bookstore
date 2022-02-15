@@ -11,6 +11,9 @@ public class Book {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
+	
+	
+
 	private String title;
 	private String author;
 	private int year;
@@ -56,6 +59,10 @@ public class Book {
 	public void setPrice(double price) {
 		this.price = price;
 	}
+	
+	public void setId(long id) {
+		this.id = id;
+	}
 
 	//Getterit
 	public String getTitle() {
@@ -76,6 +83,10 @@ public class Book {
 
 	public double getPrice() {
 		return price;
+	}
+	
+	public long getId() {
+		return id;
 	}
 
 	//toString
