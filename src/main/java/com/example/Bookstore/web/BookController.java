@@ -40,4 +40,20 @@ public class BookController {
 		bookRepository.save(book);
 		return "redirect:/booklist";
 	}
+	
+	// Kirjan muokkaus html sivulta
+	@RequestMapping(value="/edit/{id}")
+	public String editBook(@PathVariable("id") Long bookId, Model model) {
+		model.addAttribute("book", bookRepository.findById(bookId) );
+		return "/editbook";
+	}
+	
+	// Tallennetaan muokattu kirja bookRepositoryyn ja ohjataan käyttäjä takaisin booklistiin
+	@RequestMapping(value="/editBook", method=RequestMethod.POST)
+	public String editBookList(Book book) {
+		bookRepository.save(book);
+		return "redirect:/booklist";
+	}
+	
+	
 }
