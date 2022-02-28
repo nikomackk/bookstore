@@ -36,7 +36,7 @@ public class BookController {
 	@RequestMapping(value="/add")
 	public String addBook(Model model) {
 		model.addAttribute("book", new Book());
-		model.addAttribute("category", categoryRepository.findAll());
+		model.addAttribute("categories", categoryRepository.findAll());
 		return "/addbook";
 	}
 	// Tallennetaan kirja bookRepositoryyn ja ohjataan käyttäjä takaisin booklistiin
@@ -50,6 +50,7 @@ public class BookController {
 	@RequestMapping(value="/edit/{id}")
 	public String editBook(@PathVariable("id") Long bookId, Model model) {
 		model.addAttribute("book", bookRepository.findById(bookId) );
+		model.addAttribute("categories", categoryRepository.findAll());
 		return "/editbook";
 	}
 			
