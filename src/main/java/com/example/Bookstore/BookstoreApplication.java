@@ -9,6 +9,8 @@ import org.springframework.context.annotation.Bean;
 
 import com.example.Bookstore.domain.Book;
 import com.example.Bookstore.domain.BookRepository;
+import com.example.Bookstore.domain.Category;
+import com.example.Bookstore.domain.CategoryRepository;
 
 
 
@@ -22,14 +24,28 @@ public class BookstoreApplication {
 	}
 	
 	@Bean
-	public CommandLineRunner bookDemo(BookRepository repository) {
+	public CommandLineRunner bookDemo(BookRepository bookrepository, CategoryRepository categoryrepository) {
 		return (args) -> {
-			log.info("save a couple of books");
-			repository.save(new Book("Tim", "Måns Mosesson", 2021, "1234123-4", 30));
-			repository.save(new Book("Minä, Zlatan Ibrahimovic", "David Lagercrantz", 2011, "122122-2", 30));	
+			log.info("Save a couple of categories");
+			Category category1 = new Category("Biography");
+			categoryrepository.save(category1);
+			Category category2 = new Category("Scifi");
+			categoryrepository.save(category2);
+			Category category3 = new Category("Fiction");
+			categoryrepository.save(category3);
 			
-			log.info("fetch all students");
-			for (Book book : repository.findAll()) {
+			log.info("save a couple of books");
+			bookrepository.save(new Book("Tim", "Måns Mosesson", 2021, "1234123-4", 30, category1));
+			bookrepository.save(new Book("Minä, Zlatan Ibrahimovic", "David Lagercrantz", 2011, "122122-2", 30, category1));	
+			
+			
+			log.info("fetch all categories");
+			for (Category category : categoryrepository.findAll()) {
+				log.info(category.toString());
+			}
+			
+			log.info("fetch all sbooks");
+			for (Book book : bookrepository.findAll()) {
 				log.info(book.toString());
 			}
 
