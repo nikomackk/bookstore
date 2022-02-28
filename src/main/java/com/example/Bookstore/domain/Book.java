@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import fi.haagahelia.course.domain.Department;
+
 
 @Entity
 public class Book {
