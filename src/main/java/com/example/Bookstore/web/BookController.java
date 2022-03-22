@@ -29,62 +29,62 @@ public class BookController {
 	@Autowired
 	private CategoryRepository categoryRepository;
 	
-	@RequestMapping(value="/login")
+	@RequestMapping(value="login")
 	public String login() {	
 		return "login";
 	}	
 	
 	// Booklist
-	@RequestMapping(value="/books", method = RequestMethod.GET)
+	@RequestMapping(value="books", method = RequestMethod.GET)
     public @ResponseBody List<Book> bookListRest() {	
         return (List<Book>) bookRepository.findAll();
     }  
 	
 	// Find book by id
-	@RequestMapping(value="/books/{id}", method = RequestMethod.GET)
+	@RequestMapping(value="books/{id}", method = RequestMethod.GET)
 	  	public @ResponseBody Optional<Book> findBookRest(@PathVariable("id") Long id) {	
 	    return bookRepository.findById(id);
 	    }  
 	
 	 //Save book
-    @RequestMapping(value="/books", method = RequestMethod.POST)
+    @RequestMapping(value="books", method = RequestMethod.POST)
     public @ResponseBody Book saveBookRest(@RequestBody Book book) {	
     	return bookRepository.save(book);
     }
        
 	// Haetaan tietokannasta kirjat ja ohjataan booklist.html, jossa kirjat näkyvät.
-	@RequestMapping(value = "/booklist", method = RequestMethod.GET)
+	@RequestMapping(value = "booklist", method = RequestMethod.GET)
 	public String bookList(Model model) {
 		model.addAttribute("books", bookRepository.findAll());
-		return "/booklist";
+		return "booklist";
 	}
 	// Poistetaan tietokannasta kirja ID:n perusteella
-	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "delete/{id}", method = RequestMethod.GET)
 	@PreAuthorize("hasAuthority('ADMIN')")
 	public String deleteStudent(@PathVariable("id") Long bookId, Model model) {
 		bookRepository.deleteById(bookId);
 	    return "redirect:/booklist";
 	 }     
 	// Uuden kirjan lisäys html sivulta
-	@RequestMapping(value="/add")
+	@RequestMapping(value="add")
 	public String addBook(Model model) {
 		model.addAttribute("book", new Book());
 		model.addAttribute("categories", categoryRepository.findAll());
-		return "/addbook";
+		return "addbook";
 	}
 	// Tallennetaan kirja bookRepositoryyn ja ohjataan käyttäjä takaisin booklistiin
-	@RequestMapping(value="/save", method=RequestMethod.POST)
+	@RequestMapping(value="save", method=RequestMethod.POST)
 	public String saveBook(Book book) {
 		bookRepository.save(book);
 		return "redirect:/booklist";
 	}
 	
 	// Kirjan muokkaus html sivulta
-	@RequestMapping(value="/edit/{id}")
+	@RequestMapping(value="edit/{id}")
 	public String editBook(@PathVariable("id") Long bookId, Model model) {
 		model.addAttribute("book", bookRepository.findById(bookId) );
 		model.addAttribute("categories", categoryRepository.findAll());
-		return "/editbook";
+		return "editbook";
 	}
 	
 	
