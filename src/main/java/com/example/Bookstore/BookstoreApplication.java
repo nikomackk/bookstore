@@ -29,7 +29,7 @@ public class BookstoreApplication {
 	@Bean
 	public CommandLineRunner bookDemo(BookRepository bookrepository, CategoryRepository categoryrepository, UserRepository userRepository) {
 		return (args) -> {
-			log.info("Save a couple of categories");
+			/*log.info("Save a couple of categories");
 			Category category1 = new Category("Biography");
 			categoryrepository.save(category1);
 			Category category2 = new Category("Scifi");
@@ -54,7 +54,7 @@ public class BookstoreApplication {
 			log.info("fetch all books");
 			for (Book book : bookrepository.findAll()) {
 				log.info(book.toString());
-			}
+			}*/
 			
 
 		};
