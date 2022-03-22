@@ -16,20 +16,20 @@ public class CategoryController {
 	@Autowired
 	private CategoryRepository categoryRepository;
 	
-	@RequestMapping(value = "/categorylist", method = RequestMethod.GET)
+	@RequestMapping(value = "categorylist", method = RequestMethod.GET)
 	public String categoryList(Model model) {
 		model.addAttribute("categories", categoryRepository.findAll());
 		return "/categorylist";
 	}
 	
-	@RequestMapping(value = "/addcategory")
+	@RequestMapping(value = "addcategory")
 	public String addCategory(Model model) {
 		model.addAttribute("category", new Category());
 		model.addAttribute("categories", categoryRepository.findAll());
 		return "/addcategory";
 	}
 	
-	@RequestMapping(value="/savecategory", method=RequestMethod.POST)
+	@RequestMapping(value="savecategory", method=RequestMethod.POST)
 	public String saveCategory(Category category) {
 		categoryRepository.save(category);
 		return "redirect:/categorylist";
