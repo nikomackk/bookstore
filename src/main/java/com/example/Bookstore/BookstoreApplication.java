@@ -25,11 +25,11 @@ public class BookstoreApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(BookstoreApplication.class, args);
 	}
-	/*
+	
 	@Bean
 	public CommandLineRunner bookDemo(BookRepository bookrepository, CategoryRepository categoryrepository, UserRepository userRepository) {
 		return (args) -> {
-			log.info("Save a couple of categories");
+			//log.info("Save a couple of categories");
 			Category category1 = new Category("Biography");
 			categoryrepository.save(category1);
 			Category category2 = new Category("Scifi");
@@ -37,7 +37,7 @@ public class BookstoreApplication {
 			Category category3 = new Category("Fiction");
 			categoryrepository.save(category3);
 			
-			log.info("save a couple of books");
+			//log.info("save a couple of books");
 			bookrepository.save(new Book("Tim", "Måns Mosesson", 2021, "1234123-4", 30, category1));
 			bookrepository.save(new Book("Minä, Zlatan Ibrahimovic", "David Lagercrantz", 2011, "122122-2", 30, category1));	
 			
@@ -46,18 +46,18 @@ public class BookstoreApplication {
 			userRepository.save(user1);
 			userRepository.save(user2);
 			
-			log.info("fetch all categories");
-			for (Category category : categoryrepository.findAll()) {
-				log.info(category.toString());
-			}
+			//log.info("fetch all categories");
+			//for (Category category : categoryrepository.findAll()) {
+				//log.info(category.toString());
+			//}
 			
-			log.info("fetch all books");
-			for (Book book : bookrepository.findAll()) {
-				log.info(book.toString());
-			}
+			//log.info("fetch all books");
+			//for (Book book : bookrepository.findAll()) {
+				//log.info(book.toString());
+			//}
 			
 
 		};
-	} */
+	} 
 
 }
