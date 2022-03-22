@@ -20,12 +20,12 @@ import com.example.Bookstore.domain.UserRepository;
 @SpringBootApplication
 public class BookstoreApplication {
 
-	private static final Logger log = LoggerFactory.getLogger(BookstoreApplication.class);
+	//private static final Logger log = LoggerFactory.getLogger(BookstoreApplication.class);
 	
 	public static void main(String[] args) {
 		SpringApplication.run(BookstoreApplication.class, args);
 	}
-	
+	/*
 	@Bean
 	public CommandLineRunner bookDemo(BookRepository bookrepository, CategoryRepository categoryrepository, UserRepository userRepository) {
 		return (args) -> {
@@ -58,6 +58,6 @@ public class BookstoreApplication {
 			
 
 		};
-	}
+	} */
 
 }
