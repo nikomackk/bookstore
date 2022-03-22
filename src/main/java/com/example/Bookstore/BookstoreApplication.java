@@ -27,7 +27,6 @@ public class BookstoreApplication {
 	}
 	
 	
-	
 	@Bean
 	public CommandLineRunner bookDemo(BookRepository bookrepository, CategoryRepository categoryrepository, UserRepository userRepository) {
 		return (args) -> {
