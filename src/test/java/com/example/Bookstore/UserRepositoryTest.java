@@ -35,13 +35,13 @@ public class UserRepositoryTest {
 	}
 	
 	// Tämä testi ei toimi, koska käsittääkseni useria ei oikein voi poistaa, kun user luokan määrittelyt ei anna siihen lupaa?
-	/*@Test
+	@Test
 	public void deleteUser() {
 		User user3 = new User("käyttäjä2", "salasana", "ADMIN");
 		userRepository.save(user3);
 		userRepository.deleteById(user3.getId());
-		assertThat(user3.getRole()).isEmpty();
-	}*/
+		assertThat(user3.getUsername()).isEmpty();
+	}
 		
 
 }
