@@ -61,7 +61,7 @@ public class BookController {
 	// Poistetaan tietokannasta kirja ID:n perusteella
 	@RequestMapping(value = "delete/{id}", method = RequestMethod.GET)
 	@PreAuthorize("hasAuthority('ADMIN')")
-	public String deleteStudent(@PathVariable("id") Long bookId, Model model) {
+	public String deleteBook(@PathVariable("id") Long bookId, Model model) {
 		bookRepository.deleteById(bookId);
 	    return "redirect:/booklist";
 	 }     
